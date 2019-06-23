@@ -1,0 +1,61 @@
+﻿@model IEnumerable<scaffef.Models.tblTask>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.tblPriority.PriorityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblProject.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblStatu.StatusName)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndUser)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.tblProject.ProjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblStatu.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblSubCategory.SubCategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
+        </td>
+    </tr>
+}
+
+</table>

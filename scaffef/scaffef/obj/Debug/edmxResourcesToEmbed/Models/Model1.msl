@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectTasksModelStoreContainer" CdmEntityContainer="ProjectTasksEntities">
+    <EntitySetMapping Name="tblCompanies">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblCompany">
+        <MappingFragment StoreEntitySet="tblCompany">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblContacts">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblContact">
+        <MappingFragment StoreEntitySet="tblContact">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="C5_2" ColumnName="5+2" />
+          <ScalarProperty Name="Badge" ColumnName="Badge" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="BusinessPhone" ColumnName="BusinessPhone" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEndUsers">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblEndUser">
+        <MappingFragment StoreEntitySet="tblEndUser">
+          <ScalarProperty Name="EndUserID" ColumnName="EndUserID" />
+          <ScalarProperty Name="EndUserName" ColumnName="EndUserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGroups">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblGroup">
+        <MappingFragment StoreEntitySet="tblGroup">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPhases">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblPhase">
+        <MappingFragment StoreEntitySet="tblPhase">
+          <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+          <ScalarProperty Name="phaseName" ColumnName="phaseName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPriorities">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblPriority">
+        <MappingFragment StoreEntitySet="tblPriority">
+          <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+          <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProjects">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblProject">
+        <MappingFragment StoreEntitySet="tblProject">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="EndUserID" ColumnName="EndUserID" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="OpenedBy" ColumnName="OpenedBy" />
+          <ScalarProperty Name="OpenedDate" ColumnName="OpenedDate" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ScheduledStart" ColumnName="ScheduledStart" />
+          <ScalarProperty Name="ActualStart" ColumnName="ActualStart" />
+          <ScalarProperty Name="ScheduledFinish" ColumnName="ScheduledFinish" />
+          <ScalarProperty Name="EstFinish" ColumnName="EstFinish" />
+          <ScalarProperty Name="ActualFinish" ColumnName="ActualFinish" />
+          <ScalarProperty Name="EstDurationDays" ColumnName="EstDurationDays" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="RelatedIssues" ColumnName="RelatedIssues" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="PublicityID" ColumnName="PublicityID" />
+          <ScalarProperty Name="PctComplete" ColumnName="PctComplete" />
+          <ScalarProperty Name="MgrComments" ColumnName="MgrComments" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPublicities">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblPublicity">
+        <MappingFragment StoreEntitySet="tblPublicity">
+          <ScalarProperty Name="PublicityID" ColumnName="PublicityID" />
+          <ScalarProperty Name="PublicityName" ColumnName="PublicityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStatus">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblStatu">
+        <MappingFragment StoreEntitySet="tblStatus">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSubCategories">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblSubCategory">
+        <MappingFragment StoreEntitySet="tblSubCategory">
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+          <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTasks">
+      <EntityTypeMapping TypeName="ProjectTasksModel.tblTask">
+        <MappingFragment StoreEntitySet="tblTask">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="EndUser" ColumnName="EndUser" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="OpenedBy" ColumnName="OpenedBy" />
+          <ScalarProperty Name="OpenedDate" ColumnName="OpenedDate" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ScheduledStart" ColumnName="ScheduledStart" />
+          <ScalarProperty Name="ActualStart" ColumnName="ActualStart" />
+          <ScalarProperty Name="ScheduledFinish" ColumnName="ScheduledFinish" />
+          <ScalarProperty Name="EstFinish" ColumnName="EstFinish" />
+          <ScalarProperty Name="ActualFinish" ColumnName="ActualFinish" />
+          <ScalarProperty Name="EstDurationDays" ColumnName="EstDurationDays" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="RelatedIssues" ColumnName="RelatedIssues" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Publicity" ColumnName="Publicity" />
+          <ScalarProperty Name="PctComplete" ColumnName="PctComplete" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="IISR" ColumnName="IISR" />
+          <ScalarProperty Name="Atch" ColumnName="Atch" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwTasks">
+      <EntityTypeMapping TypeName="ProjectTasksModel.vwTask">
+        <MappingFragment StoreEntitySet="vwTask">
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="EndUser" ColumnName="EndUser" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,977 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectTasksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="5+2" Type="varchar" MaxLength="255" />
+          <Property Name="Badge" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="255" />
+          <Property Name="BusinessPhone" Type="varchar" MaxLength="255" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="255" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEndUser">
+          <Key>
+            <PropertyRef Name="EndUserID" />
+          </Key>
+          <Property Name="EndUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EndUserName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPhase">
+          <Key>
+            <PropertyRef Name="PhaseID" />
+          </Key>
+          <Property Name="PhaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="phaseName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPriority">
+          <Key>
+            <PropertyRef Name="PriorityID" />
+          </Key>
+          <Property Name="PriorityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriorityName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EndUserID" Type="int" Nullable="false" />
+          <Property Name="AssignedTo" Type="int" Nullable="false" />
+          <Property Name="OpenedBy" Type="int" Nullable="false" />
+          <Property Name="OpenedDate" Type="datetime" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="255" />
+          <Property Name="SubCategory" Type="varchar" MaxLength="255" />
+          <Property Name="PriorityID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="2000" />
+          <Property Name="ScheduledStart" Type="datetime" />
+          <Property Name="ActualStart" Type="datetime" />
+          <Property Name="ScheduledFinish" Type="datetime" />
+          <Property Name="EstFinish" Type="varchar" MaxLength="255" />
+          <Property Name="ActualFinish" Type="datetime" />
+          <Property Name="EstDurationDays" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="RelatedIssues" Type="varchar" MaxLength="4000" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="PublicityID" Type="int" Nullable="false" />
+          <Property Name="PctComplete" Type="float" />
+          <Property Name="MgrComments" Type="varchar" MaxLength="4000" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPublicity">
+          <Key>
+            <PropertyRef Name="PublicityID" />
+          </Key>
+          <Property Name="PublicityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublicityName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PhaseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="EndUser" Type="varchar" MaxLength="255" />
+          <Property Name="AssignedTo" Type="varchar" MaxLength="255" />
+          <Property Name="OpenedBy" Type="varchar" MaxLength="255" />
+          <Property Name="OpenedDate" Type="datetime" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="SubCategoryID" Type="int" Nullable="false" />
+          <Property Name="PriorityID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="2000" />
+          <Property Name="ScheduledStart" Type="datetime" />
+          <Property Name="ActualStart" Type="datetime" />
+          <Property Name="ScheduledFinish" Type="datetime" />
+          <Property Name="EstFinish" Type="varchar" MaxLength="255" />
+          <Property Name="ActualFinish" Type="datetime" />
+          <Property Name="EstDurationDays" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="RelatedIssues" Type="varchar" MaxLength="4000" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="Publicity" Type="varchar" MaxLength="255" />
+          <Property Name="PctComplete" Type="float" />
+          <Property Name="GroupName" Type="varchar" MaxLength="255" />
+          <Property Name="IISR" Type="int" />
+          <Property Name="Atch" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectTasks.dbo.vwTask' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="StatusName" />
+            <PropertyRef Name="SubCategoryName" />
+            <PropertyRef Name="PriorityName" />
+          </Key>
+          <Property Name="TaskID" Type="int" Nullable="false" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="EndUser" Type="varchar" MaxLength="255" />
+          <Property Name="AssignedTo" Type="varchar" MaxLength="255" />
+          <Property Name="StatusName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SubCategoryName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PriorityName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="fk_CompanyContact">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblContact" Type="Self.tblContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="tblContact">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PhaseSubCategory">
+          <End Role="tblPhase" Type="Self.tblPhase" Multiplicity="1" />
+          <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhase">
+              <PropertyRef Name="PhaseID" />
+            </Principal>
+            <Dependent Role="tblSubCategory">
+              <PropertyRef Name="PhaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectAssignedTo">
+          <End Role="tblContact" Type="Self.tblContact" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="AssignedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectEndUser">
+          <End Role="tblEndUser" Type="Self.tblEndUser" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEndUser">
+              <PropertyRef Name="EndUserID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="EndUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectGroup">
+          <End Role="tblGroup" Type="Self.tblGroup" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectOpenedBy">
+          <End Role="tblContact" Type="Self.tblContact" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="OpenedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectPrority">
+          <End Role="tblPriority" Type="Self.tblPriority" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPriority">
+              <PropertyRef Name="PriorityID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectPublicity">
+          <End Role="tblPublicity" Type="Self.tblPublicity" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPublicity">
+              <PropertyRef Name="PublicityID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="PublicityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectStatus">
+          <End Role="tblStatus" Type="Self.tblStatus" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskProject">
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProject">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskPrority">
+          <End Role="tblPriority" Type="Self.tblPriority" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPriority">
+              <PropertyRef Name="PriorityID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskStatus">
+          <End Role="tblStatus" Type="Self.tblStatus" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskSubCategory">
+          <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectTasksModelStoreContainer">
+          <EntitySet Name="tblCompany" EntityType="Self.tblCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContact" EntityType="Self.tblContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEndUser" EntityType="Self.tblEndUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGroup" EntityType="Self.tblGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPhase" EntityType="Self.tblPhase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPriority" EntityType="Self.tblPriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProject" EntityType="Self.tblProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPublicity" EntityType="Self.tblPublicity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStatus" EntityType="Self.tblStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubCategory" EntityType="Self.tblSubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTask" EntityType="Self.tblTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwTask" EntityType="Self.vwTask" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwTask].[TaskID] AS [TaskID], 
+    [vwTask].[ProjectID] AS [ProjectID], 
+    [vwTask].[Title] AS [Title], 
+    [vwTask].[EndUser] AS [EndUser], 
+    [vwTask].[AssignedTo] AS [AssignedTo], 
+    [vwTask].[StatusName] AS [StatusName], 
+    [vwTask].[SubCategoryName] AS [SubCategoryName], 
+    [vwTask].[PriorityName] AS [PriorityName], 
+    [vwTask].[GroupName] AS [GroupName]
+    FROM [dbo].[vwTask] AS [vwTask]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_CompanyContact" Association="Self.fk_CompanyContact">
+            <End Role="tblCompany" EntitySet="tblCompany" />
+            <End Role="tblContact" EntitySet="tblContact" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PhaseSubCategory" Association="Self.fk_PhaseSubCategory">
+            <End Role="tblPhase" EntitySet="tblPhase" />
+            <End Role="tblSubCategory" EntitySet="tblSubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectAssignedTo" Association="Self.fk_ProjectAssignedTo">
+            <End Role="tblContact" EntitySet="tblContact" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectEndUser" Association="Self.fk_ProjectEndUser">
+            <End Role="tblEndUser" EntitySet="tblEndUser" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectGroup" Association="Self.fk_ProjectGroup">
+            <End Role="tblGroup" EntitySet="tblGroup" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectOpenedBy" Association="Self.fk_ProjectOpenedBy">
+            <End Role="tblContact" EntitySet="tblContact" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectPrority" Association="Self.fk_ProjectPrority">
+            <End Role="tblPriority" EntitySet="tblPriority" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectPublicity" Association="Self.fk_ProjectPublicity">
+            <End Role="tblPublicity" EntitySet="tblPublicity" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectStatus" Association="Self.fk_ProjectStatus">
+            <End Role="tblStatus" EntitySet="tblStatus" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskProject" Association="Self.fk_TaskProject">
+            <End Role="tblProject" EntitySet="tblProject" />
+            <End Role="tblTask" EntitySet="tblTask" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskPrority" Association="Self.fk_TaskPrority">
+            <End Role="tblPriority" EntitySet="tblPriority" />
+            <End Role="tblTask" EntitySet="tblTask" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskStatus" Association="Self.fk_TaskStatus">
+            <End Role="tblStatus" EntitySet="tblStatus" />
+            <End Role="tblTask" EntitySet="tblTask" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskSubCategory" Association="Self.fk_TaskSubCategory">
+            <End Role="tblSubCategory" EntitySet="tblSubCategory" />
+            <End Role="tblTask" EntitySet="tblTask" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectTasksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblContacts" Relationship="Self.fk_CompanyContact" FromRole="tblCompany" ToRole="tblContact" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="C5_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Badge" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MobilePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCompany" Relationship="Self.fk_CompanyContact" FromRole="tblContact" ToRole="tblCompany" />
+          <NavigationProperty Name="tblProjects" Relationship="Self.fk_ProjectAssignedTo" FromRole="tblContact" ToRole="tblProject" />
+          <NavigationProperty Name="tblProjects1" Relationship="Self.fk_ProjectOpenedBy" FromRole="tblContact" ToRole="tblProject" />
+        </EntityType>
+        <EntityType Name="tblEndUser">
+          <Key>
+            <PropertyRef Name="EndUserID" />
+          </Key>
+          <Property Name="EndUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EndUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProjects" Relationship="Self.fk_ProjectEndUser" FromRole="tblEndUser" ToRole="tblProject" />
+        </EntityType>
+        <EntityType Name="tblGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProjects" Relationship="Self.fk_ProjectGroup" FromRole="tblGroup" ToRole="tblProject" />
+        </EntityType>
+        <EntityType Name="tblPhase">
+          <Key>
+            <PropertyRef Name="PhaseID" />
+          </Key>
+          <Property Name="PhaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phaseName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblSubCategories" Relationship="Self.fk_PhaseSubCategory" FromRole="tblPhase" ToRole="tblSubCategory" />
+        </EntityType>
+        <EntityType Name="tblPriority">
+          <Key>
+            <PropertyRef Name="PriorityID" />
+          </Key>
+          <Property Name="PriorityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProjects" Relationship="Self.fk_ProjectPrority" FromRole="tblPriority" ToRole="tblProject" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.fk_TaskPrority" FromRole="tblPriority" ToRole="tblTask" />
+        </EntityType>
+        <EntityType Name="tblProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EndUserID" Type="Int32" Nullable="false" />
+          <Property Name="AssignedTo" Type="Int32" Nullable="false" />
+          <Property Name="OpenedBy" Type="Int32" Nullable="false" />
+          <Property Name="OpenedDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ScheduledStart" Type="DateTime" Precision="3" />
+          <Property Name="ActualStart" Type="DateTime" Precision="3" />
+          <Property Name="ScheduledFinish" Type="DateTime" Precision="3" />
+          <Property Name="EstFinish" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ActualFinish" Type="DateTime" Precision="3" />
+          <Property Name="EstDurationDays" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="RelatedIssues" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PublicityID" Type="Int32" Nullable="false" />
+          <Property Name="PctComplete" Type="Double" />
+          <Property Name="MgrComments" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblContact" Relationship="Self.fk_ProjectAssignedTo" FromRole="tblProject" ToRole="tblContact" />
+          <NavigationProperty Name="tblContact1" Relationship="Self.fk_ProjectOpenedBy" FromRole="tblProject" ToRole="tblContact" />
+          <NavigationProperty Name="tblEndUser" Relationship="Self.fk_ProjectEndUser" FromRole="tblProject" ToRole="tblEndUser" />
+          <NavigationProperty Name="tblGroup" Relationship="Self.fk_ProjectGroup" FromRole="tblProject" ToRole="tblGroup" />
+          <NavigationProperty Name="tblPriority" Relationship="Self.fk_ProjectPrority" FromRole="tblProject" ToRole="tblPriority" />
+          <NavigationProperty Name="tblPublicity" Relationship="Self.fk_ProjectPublicity" FromRole="tblProject" ToRole="tblPublicity" />
+          <NavigationProperty Name="tblStatu" Relationship="Self.fk_ProjectStatus" FromRole="tblProject" ToRole="tblStatus" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.fk_TaskProject" FromRole="tblProject" ToRole="tblTask" />
+        </EntityType>
+        <EntityType Name="tblPublicity">
+          <Key>
+            <PropertyRef Name="PublicityID" />
+          </Key>
+          <Property Name="PublicityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublicityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProjects" Relationship="Self.fk_ProjectPublicity" FromRole="tblPublicity" ToRole="tblProject" />
+        </EntityType>
+        <EntityType Name="tblStatu">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProjects" Relationship="Self.fk_ProjectStatus" FromRole="tblStatus" ToRole="tblProject" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.fk_TaskStatus" FromRole="tblStatus" ToRole="tblTask" />
+        </EntityType>
+        <EntityType Name="tblSubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhaseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblPhase" Relationship="Self.fk_PhaseSubCategory" FromRole="tblSubCategory" ToRole="tblPhase" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.fk_TaskSubCategory" FromRole="tblSubCategory" ToRole="tblTask" />
+        </EntityType>
+        <EntityType Name="tblTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EndUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OpenedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OpenedDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="SubCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="PriorityID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ScheduledStart" Type="DateTime" Precision="3" />
+          <Property Name="ActualStart" Type="DateTime" Precision="3" />
+          <Property Name="ScheduledFinish" Type="DateTime" Precision="3" />
+          <Property Name="EstFinish" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ActualFinish" Type="DateTime" Precision="3" />
+          <Property Name="EstDurationDays" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="RelatedIssues" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Publicity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PctComplete" Type="Double" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IISR" Type="Int32" />
+          <Property Name="Atch" Type="Boolean" />
+          <NavigationProperty Name="tblPriority" Relationship="Self.fk_TaskPrority" FromRole="tblTask" ToRole="tblPriority" />
+          <NavigationProperty Name="tblProject" Relationship="Self.fk_TaskProject" FromRole="tblTask" ToRole="tblProject" />
+          <NavigationProperty Name="tblStatu" Relationship="Self.fk_TaskStatus" FromRole="tblTask" ToRole="tblStatus" />
+          <NavigationProperty Name="tblSubCategory" Relationship="Self.fk_TaskSubCategory" FromRole="tblTask" ToRole="tblSubCategory" />
+        </EntityType>
+        <Association Name="fk_CompanyContact">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblContact" Type="Self.tblContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="tblContact">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectAssignedTo">
+          <End Role="tblContact" Type="Self.tblContact" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="AssignedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectOpenedBy">
+          <End Role="tblContact" Type="Self.tblContact" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="OpenedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectEndUser">
+          <End Role="tblEndUser" Type="Self.tblEndUser" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEndUser">
+              <PropertyRef Name="EndUserID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="EndUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectGroup">
+          <End Role="tblGroup" Type="Self.tblGroup" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PhaseSubCategory">
+          <End Role="tblPhase" Type="Self.tblPhase" Multiplicity="1" />
+          <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPhase">
+              <PropertyRef Name="PhaseID" />
+            </Principal>
+            <Dependent Role="tblSubCategory">
+              <PropertyRef Name="PhaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectPrority">
+          <End Role="tblPriority" Type="Self.tblPriority" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPriority">
+              <PropertyRef Name="PriorityID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskPrority">
+          <End Role="tblPriority" Type="Self.tblPriority" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPriority">
+              <PropertyRef Name="PriorityID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectPublicity">
+          <End Role="tblPublicity" Type="Self.tblPublicity" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPublicity">
+              <PropertyRef Name="PublicityID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="PublicityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProjectStatus">
+          <End Role="tblStatus" Type="Self.tblStatu" Multiplicity="1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskProject">
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProject">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskStatus">
+          <End Role="tblStatus" Type="Self.tblStatu" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaskSubCategory">
+          <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="1" />
+          <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="tblTask">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectTasksEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCompanies" EntityType="Self.tblCompany" />
+          <EntitySet Name="tblContacts" EntityType="Self.tblContact" />
+          <EntitySet Name="tblEndUsers" EntityType="Self.tblEndUser" />
+          <EntitySet Name="tblGroups" EntityType="Self.tblGroup" />
+          <EntitySet Name="tblPhases" EntityType="Self.tblPhase" />
+          <EntitySet Name="tblPriorities" EntityType="Self.tblPriority" />
+          <EntitySet Name="tblProjects" EntityType="Self.tblProject" />
+          <EntitySet Name="tblPublicities" EntityType="Self.tblPublicity" />
+          <EntitySet Name="tblStatus" EntityType="Self.tblStatu" />
+          <EntitySet Name="tblSubCategories" EntityType="Self.tblSubCategory" />
+          <EntitySet Name="tblTasks" EntityType="Self.tblTask" />
+          <AssociationSet Name="fk_CompanyContact" Association="Self.fk_CompanyContact">
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+            <End Role="tblContact" EntitySet="tblContacts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectAssignedTo" Association="Self.fk_ProjectAssignedTo">
+            <End Role="tblContact" EntitySet="tblContacts" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectOpenedBy" Association="Self.fk_ProjectOpenedBy">
+            <End Role="tblContact" EntitySet="tblContacts" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectEndUser" Association="Self.fk_ProjectEndUser">
+            <End Role="tblEndUser" EntitySet="tblEndUsers" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectGroup" Association="Self.fk_ProjectGroup">
+            <End Role="tblGroup" EntitySet="tblGroups" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PhaseSubCategory" Association="Self.fk_PhaseSubCategory">
+            <End Role="tblPhase" EntitySet="tblPhases" />
+            <End Role="tblSubCategory" EntitySet="tblSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectPrority" Association="Self.fk_ProjectPrority">
+            <End Role="tblPriority" EntitySet="tblPriorities" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskPrority" Association="Self.fk_TaskPrority">
+            <End Role="tblPriority" EntitySet="tblPriorities" />
+            <End Role="tblTask" EntitySet="tblTasks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectPublicity" Association="Self.fk_ProjectPublicity">
+            <End Role="tblPublicity" EntitySet="tblPublicities" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProjectStatus" Association="Self.fk_ProjectStatus">
+            <End Role="tblStatus" EntitySet="tblStatus" />
+            <End Role="tblProject" EntitySet="tblProjects" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskProject" Association="Self.fk_TaskProject">
+            <End Role="tblProject" EntitySet="tblProjects" />
+            <End Role="tblTask" EntitySet="tblTasks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskStatus" Association="Self.fk_TaskStatus">
+            <End Role="tblStatus" EntitySet="tblStatus" />
+            <End Role="tblTask" EntitySet="tblTasks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaskSubCategory" Association="Self.fk_TaskSubCategory">
+            <End Role="tblSubCategory" EntitySet="tblSubCategories" />
+            <End Role="tblTask" EntitySet="tblTasks" />
+          </AssociationSet>
+          <EntitySet Name="vwTasks" EntityType="ProjectTasksModel.vwTask" />
+        </EntityContainer>
+        <EntityType Name="vwTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="StatusName" />
+            <PropertyRef Name="SubCategoryName" />
+            <PropertyRef Name="PriorityName" />
+          </Key>
+          <Property Name="TaskID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EndUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectTasksModelStoreContainer" CdmEntityContainer="ProjectTasksEntities">
+          <EntitySetMapping Name="tblCompanies">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblCompany">
+              <MappingFragment StoreEntitySet="tblCompany">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContacts">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblContact">
+              <MappingFragment StoreEntitySet="tblContact">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="C5_2" ColumnName="5+2" />
+                <ScalarProperty Name="Badge" ColumnName="Badge" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="BusinessPhone" ColumnName="BusinessPhone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEndUsers">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblEndUser">
+              <MappingFragment StoreEntitySet="tblEndUser">
+                <ScalarProperty Name="EndUserID" ColumnName="EndUserID" />
+                <ScalarProperty Name="EndUserName" ColumnName="EndUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGroups">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblGroup">
+              <MappingFragment StoreEntitySet="tblGroup">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPhases">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblPhase">
+              <MappingFragment StoreEntitySet="tblPhase">
+                <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+                <ScalarProperty Name="phaseName" ColumnName="phaseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPriorities">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblPriority">
+              <MappingFragment StoreEntitySet="tblPriority">
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProjects">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblProject">
+              <MappingFragment StoreEntitySet="tblProject">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="EndUserID" ColumnName="EndUserID" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="OpenedBy" ColumnName="OpenedBy" />
+                <ScalarProperty Name="OpenedDate" ColumnName="OpenedDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ScheduledStart" ColumnName="ScheduledStart" />
+                <ScalarProperty Name="ActualStart" ColumnName="ActualStart" />
+                <ScalarProperty Name="ScheduledFinish" ColumnName="ScheduledFinish" />
+                <ScalarProperty Name="EstFinish" ColumnName="EstFinish" />
+                <ScalarProperty Name="ActualFinish" ColumnName="ActualFinish" />
+                <ScalarProperty Name="EstDurationDays" ColumnName="EstDurationDays" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="RelatedIssues" ColumnName="RelatedIssues" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PublicityID" ColumnName="PublicityID" />
+                <ScalarProperty Name="PctComplete" ColumnName="PctComplete" />
+                <ScalarProperty Name="MgrComments" ColumnName="MgrComments" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPublicities">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblPublicity">
+              <MappingFragment StoreEntitySet="tblPublicity">
+                <ScalarProperty Name="PublicityID" ColumnName="PublicityID" />
+                <ScalarProperty Name="PublicityName" ColumnName="PublicityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStatus">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblStatu">
+              <MappingFragment StoreEntitySet="tblStatus">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubCategories">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblSubCategory">
+              <MappingFragment StoreEntitySet="tblSubCategory">
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTasks">
+            <EntityTypeMapping TypeName="ProjectTasksModel.tblTask">
+              <MappingFragment StoreEntitySet="tblTask">
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="EndUser" ColumnName="EndUser" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="OpenedBy" ColumnName="OpenedBy" />
+                <ScalarProperty Name="OpenedDate" ColumnName="OpenedDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ScheduledStart" ColumnName="ScheduledStart" />
+                <ScalarProperty Name="ActualStart" ColumnName="ActualStart" />
+                <ScalarProperty Name="ScheduledFinish" ColumnName="ScheduledFinish" />
+                <ScalarProperty Name="EstFinish" ColumnName="EstFinish" />
+                <ScalarProperty Name="ActualFinish" ColumnName="ActualFinish" />
+                <ScalarProperty Name="EstDurationDays" ColumnName="EstDurationDays" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="RelatedIssues" ColumnName="RelatedIssues" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Publicity" ColumnName="Publicity" />
+                <ScalarProperty Name="PctComplete" ColumnName="PctComplete" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="IISR" ColumnName="IISR" />
+                <ScalarProperty Name="Atch" ColumnName="Atch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwTasks">
+            <EntityTypeMapping TypeName="ProjectTasksModel.vwTask">
+              <MappingFragment StoreEntitySet="vwTask">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="EndUser" ColumnName="EndUser" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
